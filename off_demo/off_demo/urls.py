@@ -16,8 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from . import views as v
-from .views import HomeView
+from . import views as demo_view
+
+from . import views1 as v
+from .views1 import HomeView
 from django.urls import path, include
 
 
@@ -26,7 +28,8 @@ def home_view(request):
     return view.get1(request)
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', v.demo),
-    path('home/', home_view, name='home'),
-    path('myapp/', include('demoapp1.urls')),
+    path('demo/',demo_view.demo_function)
+    # path('', v.demo),
+    # path('home/', home_view, name='home'),
+    # path('myapp/', include('demoapp1.urls')),
 ]
