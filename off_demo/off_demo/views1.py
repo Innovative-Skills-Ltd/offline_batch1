@@ -2,6 +2,8 @@ from django.http import HttpResponse
 
 from django.views import View
 from django.http import JsonResponse
+
+
 def demo(request):
     # return HttpResponse("Hello function based view!")
     all_attrs = dir(request)

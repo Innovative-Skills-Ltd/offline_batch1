@@ -28,8 +28,10 @@ def home_view(request):
     return view.get1(request)
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('demo/',demo_view.demo_function)
+    # path('demo/',demo_view.demo_function),
+    # path('demo/show/',demo_view.show)
     # path('', v.demo),
     # path('home/', home_view, name='home'),
     # path('myapp/', include('demoapp1.urls')),
+    path('demo/',demo_view.demo_function1)
 ]
