@@ -18,7 +18,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent #C:\offline\day\off_demo
 
 import os
-template_path = os.path.join(BASE_DIR,'templates1')
+template_path = os.path.join(BASE_DIR,'templates')
 #C:\offline\day\off_demo\templates
 
 # Quick-start development settings - unsuitable for production

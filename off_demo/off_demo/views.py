@@ -43,4 +43,5 @@ from . import models
 #     return render(req, 'demo.html', context)
 
 def demo_function1(req):
-    return render(req,'demo.html')
+    data = {'d':['salman','sultan']}
+    return render(req,'demo.html',data)
