@@ -1,12 +1,51 @@
 <!DOCTYPE html>
-
-
+<html>
+<head>
+    <title>Demo Table</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even){
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
 <body>
-    <h1>
-        This is demo html file
-        {% for i in d %}
-            {{forloop.counter}}{{i}}
-        {% endfor %}
-    </h1>
+    <h1 style="text-align:center;">Demo Data Table</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Sl. No.</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.email }}</td>
+                    <td>{{ i.phone }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4" style="text-align:center;">No Data Found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
