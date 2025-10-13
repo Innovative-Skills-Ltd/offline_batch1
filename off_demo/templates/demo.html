@@ -30,6 +30,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
+                <th>image</th>
             </tr>
         </thead>
         <tbody>
@@ -39,6 +40,7 @@
                     <td>{{ i.name }}</td>
                     <td>{{ i.email }}</td>
                     <td>{{ i.phone }}</td>
+                    <td><img src="{{i.file.url}}"></td>
                 </tr>
             {% empty %}
                 <tr>

@@ -21,6 +21,8 @@ from . import views as demo_view
 from . import views1 as v
 from .views1 import HomeView
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 def home_view(request):
@@ -37,3 +39,7 @@ urlpatterns = [
     path('insert/',demo_view.customer,name='customer_insert'),
     path('demo/show',demo_view.demo_function_show,name='show_customer')
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+print(urlpatterns)

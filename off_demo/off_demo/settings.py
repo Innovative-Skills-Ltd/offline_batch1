@@ -19,6 +19,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent #C:\offline\day\off_demo
 
 import os
 template_path = os.path.join(BASE_DIR,'templates')
+MEDIA_URL  = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 #C:\offline\day\off_demo\templates
 
 # Quick-start development settings - unsuitable for production

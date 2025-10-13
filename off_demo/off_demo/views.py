@@ -73,6 +73,7 @@ def customer(req):
     customer_name = req.POST.get('cus_name')
     email = req.POST.get('email')
     phone = req.POST.get('phone')
-    Customer1= models.Customer1(name = customer_name,email = email,phone = phone)
+    file = req.FILES.get('file')
+    Customer1= models.Customer1(name = customer_name,email = email,phone = phone,file=file)
     Customer1.save()
     return redirect('show_customer')
