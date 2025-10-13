@@ -34,5 +34,6 @@ urlpatterns = [
     # path('home/', home_view, name='home'),
     # path('myapp/', include('demoapp1.urls')),
     path('demo/',demo_view.demo_function1),
-    path('demo/show',demo_view.demo_function_show)
+    path('insert/',demo_view.customer,name='customer_insert'),
+    path('demo/show',demo_view.demo_function_show,name='show_customer')
 ]

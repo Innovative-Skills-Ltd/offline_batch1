@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse, JsonResponse
 from . import models
 
@@ -44,11 +44,11 @@ from . import models
 from . import models
 def demo_function1(req):
     
-    var_name = "salman md sultan1"
-    var_email = "salman1@gmail.com"
-    var_phone = "011"
-    c = models.Customer1(name=var_name,email=var_email,phone=var_phone)
-    c.save()
+    # var_name = "salman md sultan1"
+    # var_email = "salman12@gmail.com"
+    # var_phone = "011"
+    # c = models.Customer1(name=var_name,email=var_email,phone=var_phone)
+    # c.save()
 
 
     # create_customer = c.objects.create(name=var_name,email=var_email,phone=var_phone)
@@ -58,8 +58,8 @@ def demo_function1(req):
 
 
     #save function
-    data = {'d':['salman','sultan']}
-    return render(req,'demo.html',data)
+    # data = {'d':['salman','sultan']}
+    return render(req,'customer.html')
 
 def demo_function_show(req):
     customer = models.Customer1
@@ -67,3 +67,12 @@ def demo_function_show(req):
     all_data_dic = {'data':all_data}
     print(all_data)
     return render(req,'demo.html',all_data_dic)
+
+def customer(req):
+
+    customer_name = req.POST.get('cus_name')
+    email = req.POST.get('email')
+    phone = req.POST.get('phone')
+    Customer1= models.Customer1(name = customer_name,email = email,phone = phone)
+    Customer1.save()
+    return redirect('show_customer')
