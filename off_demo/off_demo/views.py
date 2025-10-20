@@ -137,6 +137,7 @@ def customer_update1(req):
     email = req.POST.get('email')
     phone = req.POST.get('phone')
     file = req.FILES.get('file')
+    
     customer = models.Customer1
     cust_data = get_object_or_404(customer,id=cus_id)
     
@@ -147,3 +148,28 @@ def customer_update1(req):
         cust_data.file = file
     cust_data.save()
     return redirect('show_customer')
+
+def course_info(req):
+    customer = models.Customer1
+    all_data = customer.objects.all() #queryset
+    all_data_dic = {'data':all_data}
+    print(all_data)
+    return render(req,'course_info.html',all_data_dic)
+def course_info_insert(req):
+    cus_id = req.POST.get('customer')
+    course_name = req.POST.get('course_name')
+    price = req.POST.get('price')
+    cus = get_object_or_404(models.Customer1, id=cus_id)
+    print(cus)
+    course = models.Course(name = course_name,price=price,cus_id= cus)
+    # course.name = course_name
+    # course.price = price
+    # course.cus_id = cus
+    course.save()
+    return HttpResponse("success")
+
+def course_show_info(req):
+    course = models.Course
+    all_data = course.objects.all()
+    data = {'d':all_data}
+    return render(req,'course_info_show.html',data)

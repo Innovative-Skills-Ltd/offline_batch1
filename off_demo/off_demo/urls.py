@@ -47,6 +47,11 @@ urlpatterns = [
     path('demo/edit/<int:id>/',demo_view.edit,name='data_edit'),
 
     path('customer/update',demo_view.customer_update1,name='cust_update'),
+
+    path('course_info/',demo_view.course_info,name='course_info'),
+
+    path('course_info/insert',demo_view.course_info_insert,name='course_info_insert'),
+    path('course_info/showall',demo_view.course_show_info,name='course_info_showall'),
 ]
 
 if settings.DEBUG:
