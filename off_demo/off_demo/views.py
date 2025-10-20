@@ -124,3 +124,26 @@ def customer_update(req):
 
         customer.save()  # Database update
         return redirect('show_customer') 
+    
+def customer_edit(req,cid):
+    customer = models.Customer1
+    cust_data = get_object_or_404(customer,id=cid)
+    data = {'d':cust_data}
+    return render(req,'customer_edit_form.html',data)
+    # return HttpResponse(cid)
+def customer_update1(req):
+    cus_id = req.POST.get('cus_id')
+    customer_name = req.POST.get('cus_name')
+    email = req.POST.get('email')
+    phone = req.POST.get('phone')
+    file = req.FILES.get('file')
+    customer = models.Customer1
+    cust_data = get_object_or_404(customer,id=cus_id)
+    
+    cust_data.name = customer_name
+    cust_data.email = email
+    cust_data.phone = phone
+    if file:
+        cust_data.file = file
+    cust_data.save()
+    return redirect('show_customer')

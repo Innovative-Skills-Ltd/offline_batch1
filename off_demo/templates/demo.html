@@ -43,7 +43,7 @@
                     <td>{{ i.phone }}</td>
                     <td><img src="{{i.file.url}}"></td>
                     <td>
-                        <a href="{% url 'data_edit' i.id %}">✏️ Edit</a>
+                        <a href="{% url 'edit_customer' i.id %}">✏️ Edit</a>
                     </td>
                 </tr>
             {% empty %}
