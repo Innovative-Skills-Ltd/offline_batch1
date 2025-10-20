@@ -29,8 +29,7 @@
                 <th>Sl. No.</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Phone</th>
-                <th>image</th>
+                <th>customer id</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -40,6 +39,7 @@
                     <td>{{ forloop.counter }}</td>
                     <td>{{ i.name }}</td>
                     <td>{{ i.price }}</td>
+                    <td>{{ i.cus_id.name }}</td>
                     <td>
                         <a href="{% url 'data_edit' i.id %}">✏️ Edit</a>
                     </td>

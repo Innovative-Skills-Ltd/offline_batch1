@@ -61,7 +61,11 @@ def demo_function1(req):
     # data = {'d':['salman','sultan']}
     return render(req,'customer.html')
 def course(req):
-    return render(req,'course.html')
+    customer = models.Customer1
+    all_data = customer.objects.all() #queryset
+    all_data_dic = {'data':all_data}
+    print(all_data)
+    return render(req,'course.html',all_data_dic)
 def demo_function_show(req):
     customer = models.Customer1
     all_data = customer.objects.all() #queryset
@@ -78,10 +82,13 @@ def course_show(req):
 
 
 def course_insert(req):
-
+    customer = models.Customer1
+    
+    cus_id = req.POST.get('customer')
     course_name = req.POST.get('cus_name')
     price = req.POST.get('number')
-    course= models.Course(name = course_name,price = price)
+    cus = get_object_or_404(customer, id=cus_id)
+    course= models.Course(name = course_name,price = price,cus_id=cus)
     course.save()
     return redirect('show_course')
 def customer(req):

@@ -10,7 +10,7 @@ class Customer1(models.Model):
 class Course(models.Model):
     name = models.CharField(max_length=200)   # Course name
     price = models.DecimalField(max_digits=10, decimal_places=2)  # Price
-    cus_id = models.ManyToManyField(Customer1, blank=True)
+    cus_id = models.ForeignKey(Customer1, on_delete=models.CASCADE, related_name='courses')
     created_at = models.DateTimeField(auto_now_add=True)  # Created timestamp
 
 class Customer2(models.Model):
