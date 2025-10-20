@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse, JsonResponse
 from . import models
 
@@ -77,3 +77,27 @@ def customer(req):
     Customer1= models.Customer1(name = customer_name,email = email,phone = phone,file=file)
     Customer1.save()
     return redirect('show_customer')
+
+def edit(req,id):
+    # customer = models.Customer1
+    customer = get_object_or_404(models.Customer1, id=id) #queryset
+    return render(req,'customer_edit.html',{'data':customer})
+
+def customer_update(req):
+    customer = get_object_or_404(models.Customer1, id=req.POST.get('cus_id'))
+
+    if req.method == 'POST':
+        customer_name = req.POST.get('cus_name')
+        email = req.POST.get('email')
+        phone = req.POST.get('phone')
+        file = req.FILES.get('file')
+
+        # Update field values
+        customer.name = customer_name
+        customer.email = email
+        customer.phone = phone
+        if file:  # যদি নতুন file আসে তখন আপডেট হবে
+            customer.file = file
+
+        customer.save()  # Database update
+        return redirect('show_customer') 

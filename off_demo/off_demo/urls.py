@@ -37,7 +37,10 @@ urlpatterns = [
     # path('myapp/', include('demoapp1.urls')),
     path('demo/',demo_view.demo_function1),
     path('insert/',demo_view.customer,name='customer_insert'),
-    path('demo/show',demo_view.demo_function_show,name='show_customer')
+    path('update/',demo_view.customer_update,name='customer_update'),
+
+    path('demo/show',demo_view.demo_function_show,name='show_customer'),
+    path('demo/edit/<int:id>/',demo_view.edit,name='data_edit')
 ]
 
 if settings.DEBUG:
