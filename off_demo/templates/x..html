@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Draft Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+      background-color: #f8f9fa;
+    }
+    .sidebar {
+      width: 250px;
+      background: linear-gradient(180deg, #007bff, #6610f2);
+      color: white;
+      padding: 20px 0;
+    }
+    .sidebar h4 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .sidebar a {
+      color: white;
+      display: block;
+      padding: 12px 25px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .sidebar a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .main-content {
+      flex: 1;
+      padding: 30px;
+    }
+    .upload-box {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 25px;
+    }
+    .table-box {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .action-btn {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h4>Dashboard</h4>
+    <a href="index.html">📂 Course Excel Entry</a>
+    <a href="published.html">✅ Published</a>
+    <a href="#">📊 Analyzer</a>
+  </div>
+
+  <div class="main-content">
+    <div class="upload-box">
+      <h5>📁 Upload Excel File</h5>
+      <form id="uploadForm">
+        <div class="mb-3">
+          <input type="file" class="form-control" id="excelFile" accept=".xlsx,.xls">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Status:</label><br>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="status" id="draftRadio" value="draft" checked>
+            <label class="form-check-label" for="draftRadio">Draft</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="status" id="publishedRadio" value="published">
+            <label class="form-check-label" for="publishedRadio">Published</label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+      </form>
+    </div>
+
+    <div class="table-box">
+      <h5>📋 Uploaded Draft Data</h5>
+      <table class="table table-striped align-middle">
+        <thead class="table-primary">
+          <tr>
+            <th>#</th>
+            <th>File Name</th>
+            <th>Uploaded By</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="fileTableBody">
+          <tr>
+            <td>1</td>
+            <td>sample_draft.xlsx</td>
+            <td>Admin</td>
+            <td>2025-10-22</td>
+            <td><span class="badge bg-secondary">Draft</span></td>
+            <td>
+              <button class="btn btn-sm btn-warning action-btn">Edit</button>
+              <button class="btn btn-sm btn-danger action-btn">Delete</button>
+              <button class="btn btn-sm btn-info action-btn">View</button>
+              <button class="btn btn-sm btn-success action-btn">Confirm</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const file = document.getElementById('excelFile').files[0];
+      if (!file) {
+        alert("Please select a file first!");
+        return;
+      }
+
+      const status = document.querySelector('input[name="status"]:checked').value;
+
+      if (status === 'draft') {
+        alert("File uploaded successfully to Draft!");
+      } else {
+        window.location.href = "published.html";
+      }
+    });
+  </script>
+</body>
+</html>
+
