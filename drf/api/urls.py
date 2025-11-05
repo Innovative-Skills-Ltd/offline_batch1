@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
-from .views import customerListCreateView,customerDetailView
+from .views import customerListCreateView,customerDetailView, UserRegisterView
 
 urlpatterns = [
     
@@ -25,5 +25,7 @@ urlpatterns = [
 
     path('customers/', customerListCreateView.as_view()),
     path('customers/<int:pk>/', customerDetailView.as_view(), name='book-detail'),
+    path('register/', UserRegisterView.as_view()),
+
     # path('customers/',include('studet.urls'))
 ]
