@@ -31,13 +31,13 @@ class UserRegisterView(APIView):
             subject = "Welcome to Innovative Skills LTD 🎉"
             message = f"Hi {email},\n\nYour registration was successful!\n\nThank you for joining us."
 
-            send_mail(
-                subject,
-                message,
-                settings.DEFAULT_FROM_EMAIL,
-                [email],
-                fail_silently=False
-            )
+            # send_mail(
+            #     subject,
+            #     message,
+            #     settings.DEFAULT_FROM_EMAIL,
+            #     [email],
+            #     fail_silently=False
+            # )
 
             return Response(
                     {

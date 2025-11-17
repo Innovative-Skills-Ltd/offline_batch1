@@ -11,5 +11,6 @@ class customer(models.Model):
 
 class customer2(models.Model):
     email = models.EmailField(unique=True)
+    password = models.CharField(max_length=50)
 
 
