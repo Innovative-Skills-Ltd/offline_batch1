@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'api'
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -52,7 +52,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'drf.urls'
-
+AUTHENTICATION_BACKENDS = [
+    'api.backends.CustomerBackend'
+]
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

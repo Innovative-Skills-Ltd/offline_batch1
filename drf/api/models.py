@@ -12,5 +12,13 @@ class customer(models.Model):
 class customer2(models.Model):
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=50)
+    last_login = models.DateTimeField(null=True, blank=True)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
+    @property
+    def is_authenticated(self):
+        return True
+
 
 

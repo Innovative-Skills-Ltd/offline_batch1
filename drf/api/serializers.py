@@ -33,4 +33,7 @@ class customerSerializer2(serializers.ModelSerializer):
     #     return value
     def create(self, validated_data):
         validated_data["password"] = make_password(validated_data["password"])
+        validated_data['is_active'] = True  # default
+        validated_data['is_staff'] = False
+        validated_data['is_superuser'] = False
         return super().create(validated_data)
