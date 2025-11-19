@@ -59,6 +59,21 @@ class UserRegisterView(APIView):
                     status=status.HTTP_400_BAD_REQUEST
                 )
 
+class LoginViewV2(APIView):
+    authentication_classes = []
+    def post(self, request):
+        email = request.data.get('email')
+        password = request.data.get('password')
+
+        user = authenticate(request, email=email, password=password)
+
+        if user is not None:
+            login(request, user)  # <-- session created
+            return Response({"message": "Login successful"})
+        else:
+            return Response({"error": "Invalid email or password"}, status=400)
+            
+        # return Response({"message": request.data.get('email')})
 
 from django.contrib.auth import login, authenticate
 @method_decorator(csrf_exempt, name='dispatch')

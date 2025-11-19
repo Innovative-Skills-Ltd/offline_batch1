@@ -3,7 +3,7 @@ from .models import customer2
 from django.contrib.auth.hashers import check_password
 
 class CustomerBackend(BaseBackend):
-    def authenticate(self, request, email=None, password=None):
+    def authenticate(self, request, email = None, password = None):
         try:
             user = customer2.objects.get(email=email) #select * from customer 2 where email = 'salman@gmail.com'
             #user.email, user.password, user.is_active,
@@ -14,9 +14,10 @@ class CustomerBackend(BaseBackend):
             return user
         
         return None
-
     def get_user(self, user_id):
         try:
             return customer2.objects.get(pk=user_id)
         except customer2.DoesNotExist:
             return None
+
+

@@ -53,7 +53,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'drf.urls'
 AUTHENTICATION_BACKENDS = [
-    'api.backends.CustomerBackend'
+    'api.backend_auth.CustomerBackend'
 ]
 TEMPLATES = [
     {
